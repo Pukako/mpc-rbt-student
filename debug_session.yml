@@ -10,5 +10,5 @@ windows:
   - debugging:
       layout: even-vertical
       panes:
-        - watch "systemctl status example_receiver.service"
-        - watch "systemctl status example_sender.service"
+        - watch -n 0.1 "systemctl status example_receiver.service"
+        - watch -n 0.1 "systemctl status example_sender.service"
