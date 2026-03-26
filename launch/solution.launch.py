@@ -1,4 +1,5 @@
 import os
+import launch_ros.actions
 from launch_ros.actions import Node
 from launch import LaunchDescription
 from ament_index_python.packages import get_package_share_directory
@@ -10,5 +11,19 @@ def generate_launch_description():
 
     
     return LaunchDescription([
-
+        launch_ros.actions.SetParameter(name='use_sim_time', value=True),	
+	Node(
+	package="mpc_rbt_student",
+	executable="localization",
+	name="localization_node",
+	output="screen"
+	),
+	
+	Node(
+	package="rviz2",
+	executable="rviz2",
+	name="rviz2",
+	arguments=["-d", rviz_config_path],
+	output="screen"
+	)
     ])
