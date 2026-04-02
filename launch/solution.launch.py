@@ -25,5 +25,11 @@ def generate_launch_description():
 	name="rviz2",
 	arguments=["-d", rviz_config_path],
 	output="screen"
+	),
+	
+	Node(
+	package="mpc_rbt_student",
+	executable="planning",
+	name="planning_node"
 	)
     ])

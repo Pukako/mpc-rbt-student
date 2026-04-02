@@ -21,6 +21,7 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(mpc_rbt_simulator REQUIRED)
 
+
 # Define include directories for the compiler
 include_directories(PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -39,7 +40,7 @@ set(dependencies
         mpc_rbt_simulator
 )
 
-add_library(${PROJECT_NAME} SHARED src/KeyboardControl.cpp src/Localization.cpp)
+add_library(${PROJECT_NAME} SHARED src/KeyboardControl.cpp src/Localization.cpp src/Planning.cpp)
 
 ament_target_dependencies(${PROJECT_NAME} ${dependencies})
 install(TARGETS ${PROJECT_NAME}
@@ -65,6 +66,9 @@ install(TARGETS localization DESTINATION lib/${PROJECT_NAME})
 # * * * * * * * * * * * * * * * * *
 # *      Lab 06_planning
 # * * * * * * * * * * * * * * * * *
+add_executable(planning src/planning_node.cpp)
+target_link_libraries(planning ${PROJECT_NAME})
+install(TARGETS planning DESTINATION lib/${PROJECT_NAME})
 
 # * * * * * * * * * * * * * * * * *
 # *       Lab 07_control
