@@ -23,7 +23,15 @@ class MotionControlNode : public rclcpp::Node {
     private:
         // Parameters
         // TO DO
-
+        bool navigating_;
+	bool collision_detected_;
+	size_t current_waypoint_;
+	
+	
+	double max_linear_vel_;
+	double max_angular_vel_;
+	double lookahead_dist_;
+	double collision_threshold_;
         // Methods
         void checkCollision();
         void updateTwist();
@@ -31,7 +39,9 @@ class MotionControlNode : public rclcpp::Node {
             
         // Callbacks
         rclcpp_action::GoalResponse navHandleGoal(const rclcpp_action::GoalUUID & uuid, std::shared_ptr<const nav2_msgs::action::NavigateToPose::Goal> goal);
+        
         rclcpp_action::CancelResponse navHandleCancel(const std::shared_ptr<rclcpp_action::ServerGoalHandle<nav2_msgs::action::NavigateToPose>> goal_handle);
+        
         void navHandleAccepted(const std::shared_ptr<rclcpp_action::ServerGoalHandle<nav2_msgs::action::NavigateToPose>> goal_handle);
         
         void pathCallback(rclcpp::Client<nav_msgs::srv::GetPlan>::SharedFuture);

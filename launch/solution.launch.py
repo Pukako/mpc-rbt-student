@@ -31,5 +31,11 @@ def generate_launch_description():
 	package="mpc_rbt_student",
 	executable="planning",
 	name="planning_node"
+	),
+	
+	Node(
+	package="mpc_rbt_student",
+	executable="motion_control",
+	name="motion_control_node"
 	)
     ])

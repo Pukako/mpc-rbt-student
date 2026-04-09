@@ -58,7 +58,7 @@ void PlanningNode::planPath(
 void PlanningNode::dilateMap() {
     nav_msgs::msg::OccupancyGrid dilatedMap = map_;
 
-    int radius = 5;
+    int radius = 10;
 
     for (int y = 0; y < (int)map_.info.height; y++) {
         for (int x = 0; x < (int)map_.info.width; x++) {
