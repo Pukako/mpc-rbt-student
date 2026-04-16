@@ -49,7 +49,7 @@ void MotionControlNode::checkCollision() {
     int width = 30;
 
     for (int i = center - width; i < center + width; i++) {
-	RCLCPP_INFO(get_logger(), "Lidar fine.");
+	//RCLCPP_INFO(get_logger(), "Lidar fine.");
         if (i < 0 || i >= (int)laser_scan_.ranges.size())
             continue;
 

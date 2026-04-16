@@ -37,5 +37,20 @@ def generate_launch_description():
 	package="mpc_rbt_student",
 	executable="motion_control",
 	name="motion_control_node"
-	)
+	),
+	
+ 	Node(
+	package='mpc_rbt_student',
+        executable='warehouse_manager',
+        name='warehouse_manager',
+        output='screen',
+	),
+
+	Node(
+        package='mpc_rbt_student',
+    	executable='bt_server',
+    	name='bt_server',
+    	output='screen',
+        parameters=[os.path.join(package_dir, 'config', 'bt_server.yaml')]
+        )
     ])
