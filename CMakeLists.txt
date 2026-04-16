@@ -80,7 +80,6 @@ install(TARGETS motion_control DESTINATION lib/${PROJECT_NAME})
 # *    Lab 08_behavior trees
 # * * * * * * * * * * * * * * * * *
 
-
 # Install additional directories and files
 install(DIRECTORY
         launch
